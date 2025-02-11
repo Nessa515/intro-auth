@@ -1,13 +1,19 @@
 "use server";
 
-export const getCookie = () => {
+import { cookies } from "next/headers";
+
+// export function getCookie() {
+
+// }
+
+export const getCookie = (name) => {
 
 }
 
-export const createCookie = () => {
+export const createCookie = (data, expires) => {
 
 }
 
-export const deleteCookie = () => {
-    
+export const deleteCookie = (name) => {
+
 }
