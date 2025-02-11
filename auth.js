@@ -1,3 +1,4 @@
+import { createCookie } from "@/actions/handleCookie"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
  
@@ -24,7 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
             if(!data.error) {
                 // Criar arquivo handleCookie
-                await createSession(data.data.token, data.data.payload.exp);
+                await createCookie("access_token",data.data.token, data.data.payload.exp);
                 return{
                     ...data.data.payload
                 }
