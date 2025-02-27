@@ -2,20 +2,18 @@
 
 import { cookies } from "next/headers";
 
-// export function getCookie() {
-
-// }
-
+// export function getCookie() { ... }
 export const getCookie = async (name) => {
     const cookieStore = await cookies()
     const data = cookieStore.get(name)
     return data?.value
 }
 
-export const createCookie = async (data, expires) => {
+export const createCookie = async (name, data, expires, httpOnly = true) => {
     const cookieStore = await cookies()
-    cookieStore.set(data, expires, {
-        httpOnly: true,
+    cookieStore.set(name, data, {
+        httpOnly: httpOnly,
+        secure: true,
         expires: new Date(expires * 1000),
         sameSite: "strict",
         path: "/"
